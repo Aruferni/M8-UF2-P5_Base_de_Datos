@@ -30,21 +30,6 @@ public class Mi_BD extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
     }
 
-    public String buscar(String _dni){
-        SQLiteDatabase _descp_busc;
-        _descp_busc = this.getReadableDatabase();
-        String[] campos = new String[]{"nombre"};
-        String[] argumentos = new String[]{_dni};
-        Cursor _res = _descp_busc.query("Usuarios", campos, "DNI = ?", argumentos, null, null, null);
-        if(_res.getCount()>=1){
-            _res.moveToNext();
-            String _sol = _res.getString(0);
-            return _sol;
-        }else{
-            return "no encontrado";
-        }
-    }
-
     public int insertar(String nombre, String Dni){
         SQLiteDatabase _descp_ins;
         SQLiteDatabase _descp_busc;
@@ -71,6 +56,21 @@ public class Mi_BD extends SQLiteOpenHelper {
             return 1;
         }else{
             return 0;
+        }
+    }
+
+    public String buscar(String _dni){
+        SQLiteDatabase _descp_busc;
+        _descp_busc = this.getReadableDatabase();
+        String[] campos = new String[]{"nombre"};
+        String[] argumentos = new String[]{_dni};
+        Cursor _res = _descp_busc.query("Usuarios", campos, "DNI = ?", argumentos, null, null, null);
+        if(_res.getCount()>=1){
+            _res.moveToNext();
+            String _sol = _res.getString(0);
+            return _sol;
+        }else{
+            return "no encontrado";
         }
     }
 
