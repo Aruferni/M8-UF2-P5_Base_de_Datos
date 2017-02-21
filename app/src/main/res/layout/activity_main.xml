@@ -34,7 +34,8 @@
         android:layout_alignBaseline="@+id/tvNombre"
         android:layout_alignBottom="@+id/tvNombre"
         android:id="@+id/etNombre"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColorLink="?attr/colorPrimary" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,12 +53,28 @@
         android:id="@+id/etDNI"
         android:layout_alignParentEnd="true"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvPuntos"
+        android:text="Puntos:"
+        android:textSize="20dp"
+        android:layout_marginTop="70dp"/>
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tvPuntos"
+        android:layout_alignBottom="@id/tvPuntos"
+        android:id="@+id/etPuntos"
+        android:layout_alignParentEnd="true"/>
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/insert"
         android:id="@+id/ibInsert"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="110dp"
         android:onClick="clickInsertar" />
 
     <!--<ImageView
@@ -73,7 +90,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/search"
         android:id="@+id/ibSearch"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="110dp"
         android:layout_centerHorizontal="true"
         android:onClick="clickBuscar"/>
 
@@ -82,7 +99,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/delete"
         android:id="@+id/ibDelete"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="110dp"
         android:layout_alignParentEnd="true"
         android:onClick="clickBorrar"/>
 

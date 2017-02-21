@@ -6,13 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageButton insert, search, delete /*, create, modify*/;
-    EditText name, id;
+    EditText name, id, points;
     Mi_BD bd = new Mi_BD(this, "Mi_DB", null, 1);
 
     @Override
@@ -40,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void insertar(){
-        String nombre = String.valueOf(name.getText());
-        String dni = String.valueOf(id.getText());
-        int _res = bd.insertar(nombre, dni); // se envian los datos para insertar
+        String nombre = name.getText().toString();
+        String dni = id.getText().toString();
+        int puntos = Integer.parseInt(points.getText().toString());
+        int _res = bd.insertar(nombre, dni, puntos); // se envian los datos para insertar
         if(_res == 1){
             msToast("Se ha insertado correctamente");
         }
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         delete = (ImageButton) findViewById(R.id.ibDelete);
         name = (EditText) findViewById(R.id.etNombre);
         id = (EditText) findViewById(R.id.etDNI);
+        points = (EditText) findViewById(R.id.etPuntos);
         //modify=(ImageView) findViewById(R.id.ivModify);
     }
 
