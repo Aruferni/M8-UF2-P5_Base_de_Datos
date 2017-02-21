@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Mi_BD extends SQLiteOpenHelper {
 
-    String SQLiteCreate = "CREATE TABLE Usuarios (DNI INTEGER PRIMARY KEY, Nombre TEXT, Puntos INTEGER)";
+    String SQLiteCreate = "CREATE TABLE Usuarios (DNI TEXT PRIMARY KEY, Nombre TEXT, Puntos TEXT)";
 
     // constructor:
     public Mi_BD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -30,13 +30,12 @@ public class Mi_BD extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
     }
 
-    public int insertar(String nombre, String dni, int puntos){
+    public int insertar(String nombre, String Dni, String puntos){
         SQLiteDatabase _descp_ins;
         SQLiteDatabase _descp_busc;
         _descp_ins = this.getWritableDatabase();
         _descp_busc = this.getReadableDatabase();
-        String _cad = "INSERT INTO Usuarios (DNI, Nombre, Puntos) VALUES ('" + dni + "' , '" + nombre +"' , '" + puntos + "')";
-
+        String _cad = "INSERT INTO Usuarios VALUES ('" + Dni + "' , '" + nombre +"' , '" + puntos + "')";
         boolean _unico = true;
         try{
             _descp_ins.execSQL(_cad);
@@ -45,12 +44,12 @@ public class Mi_BD extends SQLiteOpenHelper {
             _unico = false;
         }
         String[] campos = new String[]{"DNI", "Nombre", "Puntos"};
-        String[] argumentos = new String[]{dni};
+        String[] argumentos = new String[]{Dni};
         Cursor _res = _descp_busc.query("Usuarios", campos, "DNI = ?", argumentos, null, null, null);
         int i =_res.getCount();
         _descp_ins.close();
         _descp_busc.close();
-        //System.out.println("Usuarios actuales con dicho DNI: "+i);
+        System.out.println("Usuarios actuales con dicho DNI: "+i);
         if(!_unico){
             return -1;
         }else if(i==1){
@@ -63,7 +62,7 @@ public class Mi_BD extends SQLiteOpenHelper {
     public String buscar(String _dni){
         SQLiteDatabase _descp_busc;
         _descp_busc = this.getReadableDatabase();
-        String[] campos = new String[]{"nombre"};
+        String[] campos = new String[]{"Nombre"};
         String[] argumentos = new String[]{_dni};
         Cursor _res = _descp_busc.query("Usuarios", campos, "DNI = ?", argumentos, null, null, null);
         if(_res.getCount()>=1){
@@ -71,7 +70,7 @@ public class Mi_BD extends SQLiteOpenHelper {
             String _sol = _res.getString(0);
             return _sol;
         }else{
-            return "No encontrado";
+            return "No existe";
         }
     }
 

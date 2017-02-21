@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton insert, search, delete /*, create, modify*/;
+    ImageButton insert, search, delete;
     EditText name, id, points;
-    Mi_BD bd = new Mi_BD(this, "Mi_DB", null, 1);
+    Mi_BD bd = new Mi_BD(this, "Mi_DB1", null, 1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,22 +27,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickInsertar(View view){
-        insertar();
-    }
-
-    public void clickBuscar(View view){
-        buscar();
-    }
-
-    public void clickBorrar(View view){
-        borrar();
-    }
-
-    private void insertar(){
-        String nombre = name.getText().toString();
+        String nom = name.getText().toString();
         String dni = id.getText().toString();
-        int puntos = Integer.parseInt(points.getText().toString());
-        int _res = bd.insertar(nombre, dni, puntos); // se envian los datos para insertar
+        String punts = points.getText().toString();
+        if(nom.equals("") || dni.equals("")) msToast("Escribe todos los datos");
+        int _res = bd.insertar(nom, dni, punts); // se envian los datos para insertar
         if(_res == 1){
             msToast("Se ha insertado correctamente");
         }
@@ -51,16 +40,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void buscar(){
+    public void clickBuscar(View view){
         String dni = String.valueOf(id.getText());
         String nom = bd.buscar(dni);// y visualizamos el _nom
         name.setText(nom);
     }
 
-    private void borrar(){
+    public void clickBorrar(View view){
         String dni = String.valueOf(id.getText());
         int _res = bd.eliminar(dni); //borrar el registro con dni
         if(_res==0) {
+            name.setText("");
+            id.setText("");
             msToast("Se ha borrado correctamente");
         }
         else{
@@ -75,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.etNombre);
         id = (EditText) findViewById(R.id.etDNI);
         points = (EditText) findViewById(R.id.etPuntos);
-        //modify=(ImageView) findViewById(R.id.ivModify);
     }
 
     public void msToast(String text){
@@ -84,6 +74,4 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
-
-
 }

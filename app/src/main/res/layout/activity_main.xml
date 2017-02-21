@@ -43,7 +43,7 @@
         android:id="@+id/tvDNI"
         android:text="DNI:"
         android:textSize="20dp"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="60dp"/>
 
     <EditText
         android:layout_width="250dp"
@@ -51,7 +51,8 @@
         android:layout_alignBaseline="@id/tvDNI"
         android:layout_alignBottom="@id/tvDNI"
         android:id="@+id/etDNI"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:numeric="integer"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +60,7 @@
         android:id="@+id/tvPuntos"
         android:text="Puntos:"
         android:textSize="20dp"
-        android:layout_marginTop="70dp"/>
+        android:layout_marginTop="110dp"/>
 
     <EditText
         android:layout_width="250dp"
@@ -67,30 +68,23 @@
         android:layout_alignBaseline="@id/tvPuntos"
         android:layout_alignBottom="@id/tvPuntos"
         android:id="@+id/etPuntos"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:numeric="integer" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/insert"
         android:id="@+id/ibInsert"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="160dp"
         android:onClick="clickInsertar" />
-
-    <!--<ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/insert"
-        android:id="@+id/ivInsert"
-        android:layout_marginTop="80dp"
-        android:onClick="clickInsertar"/>-->
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/search"
         android:id="@+id/ibSearch"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="160dp"
         android:layout_centerHorizontal="true"
         android:onClick="clickBuscar"/>
 
@@ -99,7 +93,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/delete"
         android:id="@+id/ibDelete"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="160dp"
         android:layout_alignParentEnd="true"
         android:onClick="clickBorrar"/>
 
