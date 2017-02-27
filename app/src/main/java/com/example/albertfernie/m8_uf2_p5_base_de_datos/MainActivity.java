@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         String nom = name.getText().toString();
         String dni = id.getText().toString();
         String punts = points.getText().toString();
-        if(nom.equals("") || dni.equals("")) msToast("Escribe todos los datos");
+        if(nom.equals("") || dni.equals("") || punts.equals("")) msToast("Escribe todos los datos");
         int _res = bd.insertar(nom, dni, punts); // se envian los datos para insertar
         if(_res == 1){
             limpiarDatos();
@@ -43,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickBuscar(View view){
         String dni = String.valueOf(id.getText());
-        String nom = bd.buscar(dni);// y visualizamos el _nom
+        String nom = bd.buscarNom(dni);// y visualizamos el _nom
+        String punts = bd.buscarPunt(dni);
         name.setText(nom);
+        points.setText(punts);
     }
 
     public void clickCambiar(View view){
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             String nom = name.getText().toString();
             dni = id.getText().toString();
             String punts = points.getText().toString();
-            if(nom.equals("") || dni.equals("")) msToast("Escribe todos los datos");
+            if(nom.equals("") || dni.equals("") || punts.equals("")) msToast("Escribe todos los datos");
             int _res2 = bd.insertar(nom, dni, punts); // se envian los datos para insertar
             if(_res2 == 1){
                 limpiarDatos();

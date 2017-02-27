@@ -103,8 +103,7 @@
         app:srcCompat="@drawable/delete"
         android:id="@+id/ibDelete"
         android:onClick="clickBorrar"
-        android:layout_below="@+id/ibModify"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="37dp" />
+        android:layout_marginTop="250dp" />
 
 </RelativeLayout>
