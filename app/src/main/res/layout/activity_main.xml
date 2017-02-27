@@ -91,10 +91,20 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:srcCompat="@drawable/modify"
+        android:id="@+id/ibModify"
+        android:onClick="clickCambiar"
+        android:layout_alignTop="@+id/ibSearch"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/delete"
         android:id="@+id/ibDelete"
-        android:layout_marginTop="160dp"
+        android:onClick="clickBorrar"
+        android:layout_below="@+id/ibModify"
         android:layout_alignParentEnd="true"
-        android:onClick="clickBorrar"/>
+        android:layout_marginTop="37dp" />
 
 </RelativeLayout>

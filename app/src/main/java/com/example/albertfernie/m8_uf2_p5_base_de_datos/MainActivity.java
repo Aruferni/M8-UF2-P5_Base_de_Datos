@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton insert, search, delete;
     EditText name, id, points;
-    Mi_BD bd = new Mi_BD(this, "Mi_DB1", null, 1);
+    Mi_BD bd = new Mi_BD(this, "Mi_DB", null, 1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         if(nom.equals("") || dni.equals("")) msToast("Escribe todos los datos");
         int _res = bd.insertar(nom, dni, punts); // se envian los datos para insertar
         if(_res == 1){
+            limpiarDatos();
             msToast("Se ha insertado correctamente");
         }
         else{
@@ -46,12 +47,33 @@ public class MainActivity extends AppCompatActivity {
         name.setText(nom);
     }
 
+    public void clickCambiar(View view){
+        String dni = String.valueOf(id.getText());
+        int _res = bd.eliminar(dni);
+        if(_res==0) {
+            String nom = name.getText().toString();
+            dni = id.getText().toString();
+            String punts = points.getText().toString();
+            if(nom.equals("") || dni.equals("")) msToast("Escribe todos los datos");
+            int _res2 = bd.insertar(nom, dni, punts); // se envian los datos para insertar
+            if(_res2 == 1){
+                limpiarDatos();
+                msToast("Se ha modificado correctamente");
+            }
+            else{
+                msToast("No se ha podido modificar el registro");
+            }
+        }
+        else{
+            msToast("No se ha podido modificar el registro");
+        }
+    }
+
     public void clickBorrar(View view){
         String dni = String.valueOf(id.getText());
         int _res = bd.eliminar(dni); //borrar el registro con dni
         if(_res==0) {
-            name.setText("");
-            id.setText("");
+            limpiarDatos();
             msToast("Se ha borrado correctamente");
         }
         else{
@@ -73,5 +95,11 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    private void limpiarDatos(){
+        name.setText("");
+        id.setText("");
+        points.setText("");
     }
 }
